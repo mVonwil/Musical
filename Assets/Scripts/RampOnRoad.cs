@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RampOnRoad : MonoBehaviour {
 
+	public float speed = 0.25f;
 	public Quaternion playerRot;
 
 	void Start(){
@@ -11,6 +12,6 @@ public class RampOnRoad : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
-		transform.position += (Vector3.forward / 5);
+		transform.position += (Vector3.forward * speed);
 	}
 }
