@@ -221,13 +221,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   usingFirstMethod: 0
   moveSpeed: 0.5
+  dist: 0
   slerpSpeed: 0.03
+  lerpSpeed: 0
   playerPosition: {fileID: 0}
   roads: []
   blocks: []
   currentRoadBlock: 0
   currentBlock: 0
   par: {fileID: 0}
+  isCorner: 0
+  destPos: {x: -11, y: 0, z: 6.8}
 --- !u!1001 &629163251
 Prefab:
   m_ObjectHideFlags: 0
@@ -447,6 +451,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 23487914170031014, guid: 84316a13b284f404cbaaa22ce9997f5e,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 48edd111eec51df439642c8b76e94997, type: 2}
+    - target: {fileID: 23477574219730358, guid: 84316a13b284f404cbaaa22ce9997f5e,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 48edd111eec51df439642c8b76e94997, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84316a13b284f404cbaaa22ce9997f5e, type: 2}
   m_IsPrefabParent: 0
