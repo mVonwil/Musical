@@ -11,7 +11,7 @@ public class CamFollowPlayer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		camTrans = transform.position;
-		camOffset = new Vector3 (0, 0.92f, -3.204f);
+		camOffset = new Vector3 (0, 1.5f, -5f);
 		playerTrans = GameObject.FindGameObjectWithTag ("Player").GetComponent<Transform> ();
 	}
 	

@@ -13,6 +13,7 @@ public class SpaceMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Cursor.visible = false;
 		playerRot = transform.rotation;
 		parentObj = GameObject.FindGameObjectWithTag ("PlayerMover");
 		parentPos = parentObj.transform.localPosition;
