@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: dd12c30789333764cb2a075412a50c7b
-timeCreated: 1499234229
-licenseType: Pro
+guid: a76e2a127970a284e9f5bb164dc2209f
+timeCreated: 1499236684
+licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: pb_Mesh-30504
+    100000: pb_Mesh-60816
     100002: //RootNode
-    400000: pb_Mesh-30504
+    400000: pb_Mesh-60816
     400002: //RootNode
-    2300000: pb_Mesh-30504
-    3300000: pb_Mesh-30504
-    4300000: pb_Mesh-30504
+    2300000: pb_Mesh-60816
+    3300000: pb_Mesh-60816
+    4300000: pb_Mesh-60816
   materials:
     importMaterials: 1
     materialName: 0
