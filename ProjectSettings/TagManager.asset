@@ -8,6 +8,8 @@ TagManager:
   - StartCollider
   - Plane
   - Road
+  - PlayerObj
+  - PlayerMover
   layers:
   - Default
   - TransparentFX
