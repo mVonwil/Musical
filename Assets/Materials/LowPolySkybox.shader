@@ -10,7 +10,7 @@
 	}
 	
 	SubShader {
-		Tags {"RenderType" = "Opaque"}
+		Tags {"RenderType" = "Opaque" "Queue" = "Background" "IgnoreProjector" = "True"}
 		Blend SrcAlpha OneMinusSrcAlpha
 
 		Pass {
@@ -141,109 +141,6 @@
 
 				float4 colorTex = float4((IN.vertexLighting + ambientLight + diffuseReflection + specularReflection) * tex2D(_MainTex, IN.uv), 1);
 				return lerp(unity_FogColor, colorTex, IN.fogDepth);*/
-
-				fixed4 colour = lerp(_ColorThird, _ColorSecond, IN.uv.y / _Middle) * step(IN.uv.y, _Middle);
-				colour += lerp(_ColorSecond, _ColorFirst, (IN.uv.y - _Middle) / (1 - _Middle)) * step(_Middle, IN.uv.y);
-				colour.a = 1;
-
-				return colour;
-			}
-
-			ENDCG
-		}
-
-		Pass {
-			Tags {"LightMode" = "ForwardAdd"}
-			Blend One One
-			ZWrite Off
-
-			CGPROGRAM
-
-			#include "UnityCG.cginc"
-			#include "AutoLight.cginc"
-			#include "Lighting.cginc"
-
-			#pragma vertex vert
-			#pragma geometry geom
-			#pragma fragment frag
-			#pragma multi_compile_fwdadd_fullshadows
-
-			uniform float4 _ColorFirst;
-			uniform float4 _ColorSecond;
-			uniform float4 _ColorThird;
-			float _Middle;
-
-			//uniform sampler2D _MainTex;
-			uniform float _Shinyness;
-
-			struct VS_OUTPUT {
-				float3 norm : NORMAL;
-				float3 vertex : TEXCOORD0;
-				float3 uv : TEXCOORD1;
-			};
-
-			struct GEO_INPUT {
-				float4 pos : SV_POSITION;
-				float3 norm : NORMAL;
-				float4 posWorld : TEXCOORD0;
-				float3 uv : TEXCOORD1;
-				LIGHTING_COORDS(3, 4)
-			};
-
-			//Hack because TRANSFER_VERTEX_TO_FRAGMENT has harcoded requirement for 'v.vertex'
-			struct unityTransferVertexToFragmentSucksHack {
-				float4 vertex : SV_POSITION;
-			};
-
-			appdata_full vert(appdata_full v) {
-				appdata_full OUT;
-				OUT = v;
-				return OUT;
-			}
-
-			[maxvertexcount(3)]
-			void geom(triangle appdata_full IN[3], inout TriangleStream<GEO_INPUT> triStream) {
-				GEO_INPUT OUT;
-				OUT.norm = normalize((IN[0].normal + IN[1].normal + IN[2].normal) / 3);
-				OUT.uv = (IN[0].texcoord + IN[1].texcoord + IN[2].texcoord) / 3;
-
-				unityTransferVertexToFragmentSucksHack v;
-
-				v.vertex = IN[0].vertex;
-				OUT.pos = UnityObjectToClipPos(v.vertex);
-				OUT.posWorld = mul(unity_ObjectToWorld, v.vertex);
-				TRANSFER_VERTEX_TO_FRAGMENT(OUT);
-				triStream.Append(OUT);
-
-				v.vertex = IN[1].vertex;
-				OUT.pos = UnityObjectToClipPos(v.vertex);
-				OUT.posWorld = mul(unity_ObjectToWorld, v.vertex);
-				TRANSFER_VERTEX_TO_FRAGMENT(OUT);
-				triStream.Append(OUT);
-
-				v.vertex = IN[2].vertex;
-				OUT.pos = UnityObjectToClipPos(v.vertex);
-				OUT.posWorld = mul(unity_ObjectToWorld, v.vertex);
-				TRANSFER_VERTEX_TO_FRAGMENT(OUT);
-				triStream.Append(OUT);
-			}
-
-			float4 frag(GEO_INPUT IN) : COLOR {
-				/*float3 viewDir = normalize(_WorldSpaceCameraPos.xyz - IN.posWorld.xyz);
-				float3 normalDir = normalize(mul(float4(IN.norm, 0.0), unity_WorldToObject).xyz);
-				float3 vertexToLight = _WorldSpaceLightPos0.w == 0 ? _WorldSpaceLightPos0.xyz : _WorldSpaceLightPos0.xyz - IN.posWorld.xyz;
-				float3 lightDir = normalize(vertexToLight);
-
-				UNITY_LIGHT_ATTENUATION(atten, IN, IN.posWorld.xyz);
-
-				float3 specularReflection = float3(0.0, 0.0, 0.0);
-				if(dot(normalDir, lightDir) >= 0.0) {
-					specularReflection = atten * _LightColor0.rgb * pow(max(0.0, dot(reflect(-lightDir, normalDir), viewDir)), _Shinyness);
-				}
-
-				float3 diffuseReflection = atten * _LightColor0.rgb * _Color.rgb * max(0.0, dot(normalDir, lightDir));
-				float4 colorTex = tex2D(_MainTex, IN.uv);
-				return float4((diffuseReflection + specularReflection) * colorTex, 1);*/
 
 				fixed4 colour = lerp(_ColorThird, _ColorSecond, IN.uv.y / _Middle) * step(IN.uv.y, _Middle);
 				colour += lerp(_ColorSecond, _ColorFirst, (IN.uv.y - _Middle) / (1 - _Middle)) * step(_Middle, IN.uv.y);
