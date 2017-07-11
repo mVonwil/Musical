@@ -32,3 +32,12 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Assets/Prefabs/StaiRings/StairsE (10).obj.meta
+Assets/Prefabs/StaiRings/StairsD (9).obj.meta
+Assets/Prefabs/StaiRings/StairsC (8).obj.meta
+Assets/Prefabs/StaiRings/StairsB (7).obj.meta
+Assets/Prefabs/StaiRings/StairsA (6).obj.meta
+Assets/Prefabs/CylindeRings/E (6-sided).obj.meta
+Assets/Prefabs/CylindeRings/D (14-sided).obj.meta
+Assets/Prefabs/CylindeRings/C (12-sided).obj.meta
+Assets/Prefabs/CylindeRings/B (10-sided).obj.meta
