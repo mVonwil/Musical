@@ -6,12 +6,11 @@ public class CamFollowPlayer : MonoBehaviour {
 
 	public Vector3 camTrans;
 	public Transform playerTrans;
-	public Vector3 camOffset;
+	public Vector3 camOffset = new Vector3 (0, 3f, -10f);
 
 	// Use this for initialization
 	void Start () {
 		camTrans = transform.position;
-		camOffset = new Vector3 (0, 1.5f, -5f);
 		playerTrans = GameObject.FindGameObjectWithTag ("Player").GetComponent<Transform> ();
 	}
 	
