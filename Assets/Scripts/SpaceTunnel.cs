@@ -12,6 +12,10 @@ public class SpaceTunnel : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		MoveForward ();
+	}
+
+	void MoveForward(){
 		transform.position += (Vector3.forward * speed);
 	}
 }
